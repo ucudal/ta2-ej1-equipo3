@@ -8,13 +8,13 @@
  * @author belu_
  */
 public class Producto implements IProducto {
-    
+
     private Comparable codProducto;
-    
+
     private Integer precio;
-    
+
     private Integer stock;
-    
+
     private String nombre;
 
     public Producto(Comparable codProducto, Integer precio, Integer stock, String nombre) {
@@ -47,12 +47,16 @@ public class Producto implements IProducto {
     public String getNombre() {
         return nombre;
     }
-    
-    @Override
-    public void agregarCantidadStock(Integer stock){
+
+    public void agregarCantidadStock(Integer stock) {
         this.stock += stock;
     }
-    
-    @Override
-    public void restarCantidadStock(Integer stock){}
+
+    public void restarCantidadStock(Integer stock) {
+        if (this.stock >= stock) {
+            this.stock -= stock;
+        } else {
+            this.stock = 0;
+        }
+    }
 }

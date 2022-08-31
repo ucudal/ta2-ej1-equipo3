@@ -8,107 +8,114 @@
  * @author belu_
  */
 public class Almacen implements IAlmacen {
-    
+
     private Lista<Producto> listaProductos;
-    
+
     private String direccion;
-    
+
     private String telefono;
-    
+
     private String nombre;
-    
+
     public Almacen(String direccion, String telefono, String nombre) {
         this.direccion = direccion;
         this.telefono = telefono;
         this.nombre = nombre;
         listaProductos = new Lista<>();
     }
-    
+
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    
+
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
+
     public String getDireccion() {
         return direccion;
     }
-    
+
     public String getTelefono() {
         return telefono;
     }
-    
+
     public String getNombre() {
         return nombre;
     }
-    
-    @Override
-    public Lista<Producto> getListaProductos() {
-        return listaProductos;
-    }
-    
-    public long obtenerValorStock() {
-        return 0;
-    }
-    
-    @Override
-    public void insertarProducto(Producto unProducto) {
-    }
-    
-    @Override
-    public boolean eliminarProducto(Comparable codProducto) {
-        return false;
-    }
-    
-    @Override
-    public String imprimirProductos() {
-        return null;
-    }
-    
-    @Override
-    public String imprimirSeparador(String separador) {
-        return null;
-    }
-    
-    @Override
+
     public Boolean agregarStock(Comparable codProducto, Integer cantidad) {
         Nodo<Producto> nodo = listaProductos.buscar(codProducto);
-        
+
         if (nodo == null) {
             return false;
         }
-        
+
         nodo.getDato().agregarCantidadStock(cantidad);
         return true;
     }
-    
-    @Override
-    public Integer restarStock(Comparable codProducto, Integer cantidad
-    ) {
-        return null;
+
+    public Integer restarStock(Comparable codProducto, Integer cantidad) {
+        Nodo<Producto> nodoProducto = listaProductos.buscar(codProducto);
+
+        if (nodoProducto != null) {
+            Producto productoActual = nodoProducto.getDato();
+            productoActual.restarCantidadStock(cantidad);
+            return productoActual.getStock();
+        } else {
+            System.out.println("No existe ningún producto con el código: " + codProducto);
+            return null;
+        }
     }
-    
+
     @Override
-    public Producto buscarPorCodigo(Comparable codProducto
-    ) {
-        return null;
+    public Lista<Producto> getListaProductos() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
+    @Override
+    public long obtenerValorStock() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void insertarProducto(Producto unProducto) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean eliminarProducto(Comparable codProducto) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String imprimirProductos() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String imprimirSeparador(String separador) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Producto buscarPorCodigo(Comparable codProducto) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     @Override
     public void listarOrdenadoPorNombre() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
     @Override
-    public Producto buscarPorDescripcion(String descripcion
-    ) {
-        return null;
+    public Producto buscarPorDescripcion(String descripcion) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
     @Override
     public int cantidadProductos() {
-        return 0;
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }
