@@ -49,7 +49,9 @@ public class Producto implements IProducto {
     }
     
     @Override
-    public void agregarCantidadStock(Integer stock){}
+    public void agregarCantidadStock(Integer stock){
+        this.stock += stock;
+    }
     
     @Override
     public void restarCantidadStock(Integer stock){}

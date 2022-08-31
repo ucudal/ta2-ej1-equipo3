@@ -15,6 +15,12 @@ public class Main {
          * Emitir valor de stock de todo el almacen
          **/
         System.err.println("TBD");
+        
+        Almacen almacen = new Almacen("Calle 1", "099999999", "Almacen 1");
+        
+        String[] lineasAltas = ManejadorArchivosGenerico.leerArchivo(".\\src\\altas.txt");
+        
+        
     }
     
 }
