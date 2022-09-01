@@ -7,6 +7,10 @@ public class Lista<T> implements ILista<T> {
         primero = null;
     }
 
+    public Nodo<T> getPrimero() {
+        return primero;
+    }
+
     public boolean esVacia() {
         if (primero == null) {
             return true;
@@ -23,7 +27,7 @@ public class Lista<T> implements ILista<T> {
             while (actual.getSiguiente() != null) {
                 actual = actual.getSiguiente();
             }
-            actual.setSiguiente(nodo); 
+            actual.setSiguiente(nodo);
         }
     }
 
@@ -42,4 +46,30 @@ public class Lista<T> implements ILista<T> {
         return null;
     }
 
+    public boolean eliminar(Comparable clave) {
+        if (primero == null) {
+            if (primero.getEtiqueta() == clave) {
+                primero = null;
+                return true;
+            } else {
+                return false;
+            }
+        }
+        
+        Nodo anterior = primero;
+        Nodo temporal = primero.getSiguiente();
+
+        while (temporal != null) {
+            if (temporal.getEtiqueta().equals(clave)) {
+                anterior.setSiguiente(temporal.getSiguiente());
+                return true;
+            }
+
+            anterior = temporal;
+            temporal = temporal.getSiguiente();
+        }
+
+        // Si el método llegó a este punto, significa que no encontro un nodo con la clave indicada.
+        return false;
+    }
 }

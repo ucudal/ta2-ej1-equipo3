@@ -75,22 +75,39 @@ public class Almacen implements IAlmacen {
 
     @Override
     public long obtenerValorStock() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        long valorStock = 0;
+        Nodo<Producto> nodo = listaProductos.getPrimero();
+
+        while (nodo != null) {
+            valorStock += nodo.getDato().obtenerValorStock();
+            nodo = nodo.getSiguiente();
+        }
+
+        return valorStock;
     }
 
     @Override
     public void insertarProducto(Producto unProducto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Nodo<Producto> nodo = new Nodo(unProducto.getCodProducto(), unProducto);
+        listaProductos.insertar(nodo);
     }
 
     @Override
     public boolean eliminarProducto(Comparable codProducto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return listaProductos.eliminar(codProducto);
     }
 
     @Override
     public String imprimirProductos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String listado = "";
+        Nodo<Producto> nodo = listaProductos.getPrimero();
+
+        while (nodo != null) {
+            listado += nodo.getDato().productoToString() + "\n";
+            nodo = nodo.getSiguiente();
+        }
+
+        return listado;
     }
 
     @Override

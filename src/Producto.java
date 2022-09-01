@@ -53,10 +53,18 @@ public class Producto implements IProducto {
     }
 
     public void restarCantidadStock(Integer stock) {
-        if (this.stock >= stock) {
+        if (this.stock > stock) {
             this.stock -= stock;
         } else {
             this.stock = 0;
         }
+    }
+    
+    public String productoToString(){
+        return String.format("Código: %s, Nombre: %s, Precio = %d, stock = %d", codProducto, nombre, precio, stock);
+    }
+    
+    public long obtenerValorStock(){
+        return precio*stock;
     }
 }
